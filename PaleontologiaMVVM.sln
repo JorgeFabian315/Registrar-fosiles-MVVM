@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaleontologiaMVVM", "PaleontologiaMVVM\PaleontologiaMVVM.csproj", "{CEC7E0EA-4EE1-40E7-83A8-068DC67A42DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEC7E0EA-4EE1-40E7-83A8-068DC67A42DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC7E0EA-4EE1-40E7-83A8-068DC67A42DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC7E0EA-4EE1-40E7-83A8-068DC67A42DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC7E0EA-4EE1-40E7-83A8-068DC67A42DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7F9CA68-2E51-4467-98EA-C60F9F391668}
+	EndGlobalSection
+EndGlobal

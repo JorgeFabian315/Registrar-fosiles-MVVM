@@ -1,0 +1,131 @@
+﻿<Window x:Class="PaleontologiaMVVM.Views.PrincipalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaleontologiaMVVM.Views"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Height="650" 
+        Width="1000"
+        MouseDown="Window_MouseDown"
+        MouseDoubleClick="Window_MouseDoubleClick"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.Resources>
+        <local:HomeView x:Key="Home"></local:HomeView>
+    </Window.Resources>
+    <Border Background="GhostWhite"
+            CornerRadius="10,10,0,0">
+        <Grid>
+            <ContentControl HorizontalAlignment="Right" 
+                            Width="900">
+                <ContentControl.Resources>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Content" Value="{StaticResource Home}" />
+                    </Style>
+                </ContentControl.Resources>
+                
+            </ContentControl>
+            <WrapPanel VerticalAlignment="Top"
+                       HorizontalAlignment="Right">
+                <Button Style="{StaticResource EstiloBotonesWindows}" Margin="0,10,0,0" Name="btnMinimizar" Click="btnMinimizar_Click">
+                    <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\minimizar.png"></Image>
+                </Button>
+                <Button Style="{StaticResource EstiloBotonesWindows}" Margin="10,10,17,0" Name="btnCerar" Click="btnCerar_Click">
+                    <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\cerrar.png"></Image>
+                </Button>
+            </WrapPanel>
+            <Grid x:Name="gridMenu"
+              Width="100"
+              HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border CornerRadius="10,0,0,0"
+                    Grid.RowSpan="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#373737" Offset="0"></GradientStop>
+                            <GradientStop Color="#8d8d8d" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <StackPanel Grid.Row="1">
+                    <Grid Margin="20,10"
+                      HorizontalAlignment="Left">
+                        <ToggleButton Width="30"
+                                  Height="30"
+                                  BorderThickness="0"
+                                  Cursor="Hand">
+                            <ToggleButton.Background>
+                                <ImageBrush ImageSource="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\menu.png"></ImageBrush>
+                            </ToggleButton.Background>
+
+                            <ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="gridMenu"
+                                                         Storyboard.TargetProperty="Width"
+                                                         BeginTime="0:0:0" 
+                                                         Duration="0:0:0.3"
+                                                         From=" 200" To="100">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="gridMenu"
+                                                         Storyboard.TargetProperty="Width"
+                                                         BeginTime="0:0:0" 
+                                                         Duration="0:0:0.3"
+                                                         From=" 100" To="200">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                            </ToggleButton.Triggers>
+                            <ToggleButton.Style>
+                                <Style TargetType="ToggleButton">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Border Background="{TemplateBinding Background}"
+                                                            BorderThickness="0">
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Border Background="{TemplateBinding Background}"
+                                                            BorderThickness="0">
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+    
+</Window>
