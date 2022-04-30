@@ -93,8 +93,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" 
-                        VerticalAlignment="Center"
-                        Margin="0,0,0,0">
+                        VerticalAlignment="Top"
+                        Margin="0">
                 <TextBlock FontSize="15"
                            Margin="0,0,0,20">Vista previa</TextBlock>
                 <Ellipse Width="220"
@@ -112,8 +112,19 @@
                     Grid.Column="1"
                     Width="150"
                     Height="50"
+                    BorderThickness="0"
+                    Background="Gray"
                     HorizontalAlignment="Right"
-                    Content="Argegar"></Button>
+                    Cursor="Hand">
+                <WrapPanel>
+                    <Image Source="https://cdn.icon-icons.com/icons2/1077/PNG/512/add_77928.png"
+                           Width="35"
+                           Margin="0,0,10,0"></Image>
+                    <TextBlock 
+                               FontSize="25"
+                               Foreground="White">Agregar</TextBlock>
+                </WrapPanel>
+            </Button>
             <!--#ENDREGION BOTON AGREGAR-->
         </Grid>
     </Grid>
