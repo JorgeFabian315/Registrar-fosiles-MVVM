@@ -5,84 +5,114 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PaleontologiaMVVM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-
+             d:DesignHeight="370" d:DesignWidth="900">
     <UserControl.Resources>
+        <!--#REGION ESTILOS TEXBLOCK TITULO-->
         <Style x:Key="EstiloTitulo" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="40" />
+            <Setter Property="FontSize" Value="30" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
+        <!--#ENDREGION ESTILOS TEXBLOCK TITULO-->
+        <!--#REGION ESTILOS TEXBLOCK DESCRIPCION-->
         <Style x:Key="EstiloDescripcion" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="FontSize" Value="15" />
-            <Setter Property="Margin" Value="20,20,5,0" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0,20,20,0" />
             <Setter Property="TextAlignment" Value="Justify" />
         </Style>
+        <!--#ENDREGION ESTILOS TEXBLOCK DESCRIPCION-->
     </UserControl.Resources>
-    <Border Background="GhostWhite">
-
-        <Grid>
+    <Grid Width="900">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--GRID COLUMNA 0-->
+        <Grid Height="370" Grid.Column="0">
+            <!--#REGION PROPIEDADES DEL GRID-->
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Color="Black"></DropShadowEffect>
+            </Grid.Effect>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".6*"></ColumnDefinition>
                 <ColumnDefinition Width=".4*"></ColumnDefinition>
+                <ColumnDefinition Width=".6*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height=".2*"></RowDefinition>
-                <RowDefinition Height=".8*"></RowDefinition>
+                <RowDefinition Height=".15*"></RowDefinition>
+                <RowDefinition Height=".85*"></RowDefinition>
             </Grid.RowDefinitions>
+            <!--#ENDREGION PROPIEDADES DEL GRID-->
+            <!--#REGION TITULO-->
             <Border Grid.ColumnSpan="2"
-                    Background="#101217"
-                    CornerRadius="20,20,0,0"></Border>
+                    Background="#101217" Height="76"></Border>
             <TextBlock Grid.ColumnSpan="2"
                    Style="{StaticResource EstiloTitulo}"
                    Text="Fosil de T.REX"
                    HorizontalAlignment="Center"></TextBlock>
+            <!--#ENDREGION TITULO-->
+            <!--#REGION DESCRIPCION-->
             <Border Grid.Row="1" 
-                    Grid.ColumnSpan="2">
-                <Ellipse Grid.Row="1" Grid.ColumnSpan="2"
-                     Width="800" 
-                     Height="800" 
-                     Fill="#05183c"
-                     Margin="250,50,0,0"
-                     Opacity="0.7"></Ellipse>
+                Grid.ColumnSpan="2">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,0" 
                                          EndPoint="-0.3, 1">
-                        <GradientStop Color="#1a3c7d" Offset="0"></GradientStop>
+                        <GradientStop Color="#212121" Offset="0"></GradientStop>
                         <GradientStop Color="#05183c" Offset="1"></GradientStop>
-                        
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <TextBlock Grid.Row="1" 
-                       Style="{StaticResource EstiloDescripcion}"
-                       TextWrapping="Wrap"
-                       Text="El Megalosaurus fue el primer fósil encontrado y reconocido por primera vez como un dinosaurio. En 1676, en Inglaterra, se extrajeron de una cantera de caliza los primeros fragmentos de huesos. En un primer lugar, se creyó que los huesos eran de gigantes humanos. No fue hasta 1824, cuando William Buckland tenía en su poder varias vértebras, una mandíbula inferior y otros fragmentos que probablemente no pertenecían al mismo individuo, pero a partir de ahí se consideró que el fósil pertenecía a una especie diferente y se empezaron a denominar a los dinosaurios como tales."></TextBlock>
-
+            <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="10,15,15,0"
+                   FontSize="20"
+                   Style="{StaticResource EstiloDescripcion}"
+                   TextWrapping="Wrap"
+                   Text="El Megalosaurus fue el primer fósil encontrado y reconocido por primera vez como un dinosaurio. En 1676, en Inglaterra, se extrajeron de una cantera de caliza los primeros fragmentos de huesos. En un primer lugar, se creyó que los huesos eran de gigantes humanos. No fue hasta 1824, cuando William Buckland tenía en su poder varias vértebras, una mandíbula inferior y otros fragmentos que probablemente no pertenecían al mismo individuo, pero a partir de ahí se consideró que el fósil pertenecía a una especie diferente y se empezaron a denominar a los dinosaurios como tales."></TextBlock>
+            <!--#ENDREGION DESCRIPCION-->
+            <!--#REGION IMAGEN-->
             <StackPanel Grid.Row="1"
-                        Margin="0,20,0,0"
-                        Grid.Column="1">
-                <Image Width="280" Height="200" 
-                       Stretch="Fill"
-                    Source="https://www.dinosaurios.info/images/fosil-de-dinosaurio.jpg"
-                       >
+                        Margin="10,10,0,0"
+                        Grid.Column="0">
+                <Image Width="300" Height="250" 
+                       Stretch="UniformToFill"
+                    Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\Dinosaurio2.jpg">
                     <Image.Effect>
                         <DropShadowEffect BlurRadius="30"
                                           ShadowDepth="1"></DropShadowEffect>
                     </Image.Effect>
                 </Image>
-                <TextBlock Text="Fecha de descubrimiento."
+                <TextBlock Text="Año de descubrimiento."
                            Margin="0,10,0,0"
-                           TextWrapping="Wrap"
                            Foreground="White"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
-           
-         
+            <!--#ENDREGION IMAGEN-->
         </Grid>
-    </Border>
+        <!--GRID COLUMNA 1-->
+        <Grid Grid.Column="1">
+            <Border Background="Red">
+            </Border>
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="80" />
+                        <Setter Property="Height" Value="80" />
+                        <Setter Property="Margin" Value="0,30" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button></Button>
+                <Button></Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+ 
+
 </UserControl>

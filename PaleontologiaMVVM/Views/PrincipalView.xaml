@@ -3,70 +3,164 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PaleontologiaMVVM.Views"
+        xmlns:local="clr-namespace:PaleontologiaMVVM.Views" xmlns:viewmodels="clr-namespace:PaleontologiaMVVM.ViewModels"
         mc:Ignorable="d"
         WindowStyle="None"
         Height="650" 
         Width="1000"
         MouseDown="Window_MouseDown"
-        MouseDoubleClick="Window_MouseDoubleClick"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent">
+
+    <Window.DataContext>
+        <viewmodels:PaleontologiaViewModel></viewmodels:PaleontologiaViewModel>
+    </Window.DataContext>
     <Window.Resources>
-        <local:HomeView x:Key="Home"></local:HomeView>
+        <!--#REGION ESTILOS DEL BOTON-->
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="EstilosBoton" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+   
+        <!--#ENDREGION ESTILOS BOTON-->    
     </Window.Resources>
-    <Border Background="GhostWhite"
-            CornerRadius="10,10,0,0">
+    <Border Background="GhostWhite">
+        
         <Grid>
-            <ContentControl HorizontalAlignment="Right" 
-                            Width="900">
-                <ContentControl.Resources>
-                    <Style TargetType="ContentControl">
-                        <Setter Property="Content" Value="{StaticResource Home}" />
-                    </Style>
-                </ContentControl.Resources>
+            <Grid Background="Transparent"
+                  HorizontalAlignment="Right"
+                  Width="925">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="620"></RowDefinition>
+                </Grid.RowDefinitions>
                 
-            </ContentControl>
-            <WrapPanel VerticalAlignment="Top"
-                       HorizontalAlignment="Right">
-                <Button Style="{StaticResource EstiloBotonesWindows}" Margin="0,10,0,0" Name="btnMinimizar" Click="btnMinimizar_Click">
-                    <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\minimizar.png"></Image>
-                </Button>
-                <Button Style="{StaticResource EstiloBotonesWindows}" Margin="10,10,17,0" Name="btnCerar" Click="btnCerar_Click">
-                    <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\cerrar.png"></Image>
-                </Button>
-            </WrapPanel>
+        <!--#REGION CONTENIDO-->
+                <ContentControl Name="contentcontrol"
+                                Grid.Row="1"
+                                PreviewMouseLeftButtonDown="contentcontrol_PreviewMouseLeftButtonDown">
+                    <ContentControl.Resources>
+                        <!--#REGION VISTAS-->
+                        <local:HomeView x:Key="Home"></local:HomeView>
+                        <local:ColeccionView x:Key="Coleccion"></local:ColeccionView>
+                        <local:AgregarView x:Key="Agregar"></local:AgregarView>
+                        <Style TargetType="ContentControl">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Vista}" Value="ColeccionVista">
+                                    <Setter Property="Content" Value="{StaticResource Coleccion}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Vista}" Value="HomeVista">
+                                    <Setter Property="Content" Value="{StaticResource Home}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Vista}" Value="AgregarVista">
+                                    <Setter Property="Content" Value="{StaticResource Agregar}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <!--#ENDREGION VISTAS-->
+                    </ContentControl.Resources>
+
+                </ContentControl>
+                <!--#ENDREGION CONTENIDO-->
+        <!--#REGION BOTONES DE WINDOW-->
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.3,0">
+                            <GradientStop Color="#FF222222" Offset="0"></GradientStop>
+                            <GradientStop Color="#FF222222" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <WrapPanel VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Grid.Row="0">
+                    <WrapPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Width" Value="24" />
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Style>
+                    </WrapPanel.Resources>
+                    <Button Template="{DynamicResource EstilosBoton}" Margin="0,0,0,0" Name="btnMinimizar" Click="btnMinimizar_Click">
+                        <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\minimizar.png"></Image>
+                    </Button>
+                    <Button Template="{DynamicResource EstilosBoton}" Margin="10,0,13,0" Name="btnCerar" Click="btnCerar_Click">
+                        <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\cerrar.png"></Image>
+                    </Button>
+                </WrapPanel>
+                <!--#ENDREGION BOTONES DE WINDOW-->
+            </Grid>
+        <!--#REGION GRID MENU-->
             <Grid x:Name="gridMenu"
-              Width="100"
+              Width="75"
               HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition ></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Border CornerRadius="10,0,0,0"
+                <Border CornerRadius="0,0,0,0"
                     Grid.RowSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="#373737" Offset="0"></GradientStop>
-                            <GradientStop Color="#8d8d8d" Offset="1"></GradientStop>
+                            <GradientStop Color="#FF222222" Offset="0"></GradientStop>
+                            <GradientStop Color="#6d6d6d" Offset="1"></GradientStop>
                         </LinearGradientBrush>
                     </Border.Background>
                 </Border>
-
-                <StackPanel Grid.Row="1">
-                    <Grid Margin="20,10"
-                      HorizontalAlignment="Left">
-                        <ToggleButton Width="30"
-                                  Height="30"
-                                  BorderThickness="0"
-                                  Cursor="Hand">
+                <!--#ENDREGION GRID MENU-->
+        <!--#REGION MENU-->
+                <StackPanel Grid.RowSpan="2">
+                    <!--#REGION IMAGEN USUARIO-->
+                 <WrapPanel Width="200" Margin="0,10,0,0">
+                        <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\usuario.png"
+                               VerticalAlignment="Center"
+                               Width="40"
+                               Height="40"
+                               Margin="20,0,0,0"></Image>
+                        <TextBlock Text="Jorge"
+                               Foreground="White"
+                               FontSize="20"
+                               FontFamily="../Assets/#Champagne &amp; Limousines"
+                               VerticalAlignment="Center"
+                               Margin="20,0,0,0"></TextBlock>
+                    </WrapPanel>
+                    <!--#ENDREGION IMAGEN USUARIO-->
+                    <Grid Width="200">
+                        <ToggleButton Width="40"
+                                      Height="40"
+                                      Margin="20,20"
+                                      Name="btnMenu"
+                                      BorderThickness="0"
+                                      Cursor="Hand"
+                                      HorizontalAlignment="Left">
                             <ToggleButton.Background>
                                 <ImageBrush ImageSource="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\menu.png"></ImageBrush>
                             </ToggleButton.Background>
 
                             <ToggleButton.Triggers>
+                                <!--#REGION OCULTAR-->
+
                                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                     <BeginStoryboard>
                                         <Storyboard>
@@ -74,11 +168,14 @@
                                                          Storyboard.TargetProperty="Width"
                                                          BeginTime="0:0:0" 
                                                          Duration="0:0:0.3"
-                                                         From=" 200" To="100">
+                                                         From=" 200" To="75">
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
+                                <!--#ENDREGION OCULTAR-->
+                                <!--#REGION MOSTRAR-->
+
                                 <EventTrigger RoutedEvent="ToggleButton.Checked">
                                     <BeginStoryboard>
                                         <Storyboard>
@@ -86,12 +183,12 @@
                                                          Storyboard.TargetProperty="Width"
                                                          BeginTime="0:0:0" 
                                                          Duration="0:0:0.3"
-                                                         From=" 100" To="200">
+                                                         From="75" To="200">
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
-
+                                <!--#ENDREGION MOSTRAR-->
                             </ToggleButton.Triggers>
                             <ToggleButton.Style>
                                 <Style TargetType="ToggleButton">
@@ -123,9 +220,138 @@
                             </ToggleButton.Style>
                         </ToggleButton>
                     </Grid>
+                    <!--#REGION BOTONES MENU-->
+
+                    <StackPanel Margin="0,25,0,0">
+                        <!--#REGION ESTILOS TEXBLOCK-->
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines"/>
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="25" />
+                                <Setter Property="Margin" Value="25,0,0,0" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <!--#ENDREGION ESTILOS TEXBLOCK-->
+
+                        <Button Template="{DynamicResource EstilosBoton}"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Height="40" Width="200"
+                                Command="{Binding CambiarVistaCommand, Mode=TwoWay}"
+                                CommandParameter="HomeVista"
+                                HorizontalContentAlignment="Left"
+                                Cursor="Hand"
+                                Name="btnHome"
+                                Padding="0"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Background="White" 
+                                        Height="40"
+                                        Width="8"
+                                        CornerRadius="10,0,10,0"
+                                        Margin="5,0,0,0">
+                                    <Border.Resources>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
+                                         Value="False">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
+                                         Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Resources>
+                                </Border>
+                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\home.png"></Image>
+                                <TextBlock>Home</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Template="{DynamicResource EstilosBoton}"
+                                Background="Transparent"
+                                Command="{Binding CambiarVistaCommand, Mode=TwoWay}"
+                                CommandParameter="ColeccionVista"
+                                BorderThickness="0"
+                                Name="btnColeccion"
+                                Height="40" Width="200"
+                                HorizontalContentAlignment="Left"
+                                Cursor="Hand"
+                                Padding="0"
+                                Margin="0,25,0,0"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Background="White" 
+                                           Height="40"
+                                           Margin="5,0,0,0"
+                                           Width="8"
+                                           CornerRadius="10,0,10,0">
+                                    <Border.Resources>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
+                                         Value="False">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
+                                         Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Resources>
+                                </Border>
+                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\documentos.png"></Image>
+                                <TextBlock>Colección</TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <!--#REGION BOTON AGREGAR-->
+                        <Button Template="{DynamicResource EstilosBoton}"
+                                Background="Transparent"
+                                Command="{Binding AgregarCommand, Mode=TwoWay}"
+                                BorderThickness="0"
+                                Height="40" Width="200"
+                                HorizontalContentAlignment="Left"
+                                Cursor="Hand"
+                                Padding="0"
+                                Name="btnAgregar"
+                                Margin="0,25,0,0"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Background="White" 
+                                           Height="40"
+                                           Margin="5,0,0,0"
+                                           Width="8"
+                                           CornerRadius="10,0,10,0">
+                                    <Border.Resources>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="False">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Resources>
+                                </Border>
+                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\agregar.png"></Image>
+                                <TextBlock>Agregar</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <!--#ENDREGION BOTON AGREGAR-->
+                    </StackPanel>
+                    <!--#ENDREGION BOTONES MENU-->
                 </StackPanel>
             </Grid>
-        </Grid>
+            <!--#ENDREGION MENU-->
+
+
+          </Grid>
     </Border>
-    
 </Window>

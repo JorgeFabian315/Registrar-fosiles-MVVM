@@ -40,12 +40,13 @@ namespace PaleontologiaMVVM.Views
             {
                 this.DragMove();
             }
+          
         }
 
-        private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //WindowState = WindowState.Maximized;
 
+        private void contentcontrol_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            btnMenu.IsChecked = false;
         }
     }
 }

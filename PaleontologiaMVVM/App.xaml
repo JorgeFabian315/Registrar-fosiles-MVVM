@@ -4,11 +4,5 @@
              xmlns:local="clr-namespace:PaleontologiaMVVM"
              StartupUri="Views/PrincipalView.xaml">
     <Application.Resources>
-        <Style x:Key="EstiloBotonesWindows" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Width" Value="24" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
     </Application.Resources>
 </Application>

@@ -5,15 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PaleontologiaMVVM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="900">
-    <Border CornerRadius="0,10,0,0">
+             d:DesignHeight="650" d:DesignWidth="925">
         <Grid>
-            <Image Source="https://c1.wallpaperflare.com/preview/160/1014/328/dinosaur-museum-t-rex-skeleton.jpg"
-                   Stretch="UniformToFill"></Image>
-            <Border Background="Black" Opacity="0.4">
-                
+            <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\Dinosaurio.jpg"
+                   Stretch="UniformToFill">
+            </Image>
+            <Border Background="Black"
+                    Opacity="0.5">
             </Border>
+            <TextBlock FontSize="80"
+                       FontFamily="../Assets/#Libre Bodoni"
+                       Margin="20,0,0,10"
+                       VerticalAlignment="Bottom"
+                       Foreground="GhostWhite">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="50"
+                                      Color="#000000"
+                                      ShadowDepth="1">
+                        
+                    </DropShadowEffect>
+                </TextBlock.Effect>
+                <!--Huellas <LineBreak/>del pasado-->
+            </TextBlock>
         </Grid>
-    </Border>
     
 </UserControl>
