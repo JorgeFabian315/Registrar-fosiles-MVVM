@@ -24,5 +24,7 @@ namespace PaleontologiaMVVM.Views
         {
             InitializeComponent();
         }
+
+      
     }
 }

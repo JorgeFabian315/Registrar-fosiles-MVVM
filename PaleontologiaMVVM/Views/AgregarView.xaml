@@ -54,20 +54,18 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="30">Nombre:</TextBlock>
                     <TextBox Width="350"
+                             Text="{Binding Fosil.Nombre}"
                              FontSize="25"
                              BorderThickness="0,0,0,2"
-                             BorderBrush="Black"
-                             Background="Transparent"
                              Margin="20,0,0,0"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="30">Imagen:</TextBlock>
                     <TextBox Width="350"
+                             Text="{Binding Fosil.Imagen}"
                              Name="txtImagen"
                              FontSize="25"
                              BorderThickness="0,0,0,2"
-                             BorderBrush="Black"
-                             Background="Transparent"
                              Margin="20,0,0,0"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -75,8 +73,7 @@
                     <TextBox Width="300"
                              FontSize="25"
                              BorderThickness="0,0,0,2"
-                             BorderBrush="Black"
-                             Background="Transparent"
+                             Text="{Binding Fosil.Año}"
                              Margin="20,0,0,0"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -86,6 +83,7 @@
                              HorizontalAlignment="Left"
                              AcceptsReturn="True"
                              FontSize="25"
+                             Text="{Binding Fosil.Descripcion}"
                              BorderBrush="Black"
                              Height="200"
                              Margin="0,10,0,0"></TextBox>
@@ -112,6 +110,7 @@
                     Grid.Column="1"
                     Width="150"
                     Height="50"
+                    Command="{Binding AgregarCommand}"
                     BorderThickness="0"
                     Background="Gray"
                     HorizontalAlignment="Right"
@@ -125,6 +124,11 @@
                                Foreground="White">Agregar</TextBlock>
                 </WrapPanel>
             </Button>
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       Foreground="Red"
+                       FontSize="25"
+                       Text="{Binding Error}"></TextBlock>
             <!--#ENDREGION BOTON AGREGAR-->
         </Grid>
     </Grid>

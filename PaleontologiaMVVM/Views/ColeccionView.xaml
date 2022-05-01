@@ -31,7 +31,7 @@
                 <ColumnDefinition Width=".5*"></ColumnDefinition>
                 <ColumnDefinition Width=".5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image     Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\Dinosaurio2.jpg"
+            <Image     Source="{Binding Fosil.Imagen}"
                        Stretch="UniformToFill"
                        Grid.ColumnSpan="2"></Image>
                 <Border Background="Black" 
@@ -48,19 +48,19 @@
                     
                     <StackPanel HorizontalAlignment="Right"
                             Grid.Column="1"
+                            Margin="0,40,0,0"
                             VerticalAlignment="Top">
                         <TextBlock FontSize="30"
                                FontWeight="SemiBold"
-                               Text="Dinosaurio 1"
-                               TextAlignment="Center"
-                               Margin="0,0,0,10"></TextBlock>
-                        <TextBlock Text="Una vez los paleontólogos consiguen un fósil, empieza el proceso de imaginarse cómo vivió ese ser, dónde vivió, cómo interactuaba con otros seres vivos y cómo se adaptó a su ambiente físico. A partir de pedazos de fósiles se pueden reconstruir los organismos.Por ejemplo, con una tibia o fíbula (hueso de la pierna), unas cuantas costillas y algunas vértebras se reconstruyó el esqueleto del Argentinosaurus huinculensis, un gigantosauro descubierto en la Patagonia, Argentina. Gracias a esta reconstrucción y con simulación computarizada se pudo determinar cómo estos grandes gigantes se movían."
+                               Text="{Binding Fosil.Nombre}"
+                               TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding Fosil.Descripcion}"
                                TextAlignment="Justify"></TextBlock>
                     </StackPanel>
 
                     <WrapPanel Grid.Row="1">
                         <TextBlock FontWeight="Light" Text="Año de descubrimiento" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock FontWeight="Light" Text="2022"></TextBlock>
+                        <TextBlock FontWeight="Light" Text="{Binding Fosil.Año}"></TextBlock>
                     </WrapPanel>
                 </Grid>
                 <!--#ENDREGION TEXTO-->
@@ -68,11 +68,16 @@
         <!--#ENDREGION IMAGEN-->
             
         <Grid Grid.Row="1">
+                <Grid.Resources>
+                    <DataTemplate x:Key="Plantilla">
+                        <local:PlantillaListaView></local:PlantillaListaView>
+                    </DataTemplate>
+                </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".2*"></RowDefinition>
                     <RowDefinition Height=".8*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="Blue"
+                <Border Background="Gray"
                         BorderThickness="0">
                     <TextBlock FontSize="30"
                                TextAlignment="Center">Fosiles registrados</TextBlock>
@@ -82,14 +87,35 @@
                         <ColumnDefinition Width=".9*"></ColumnDefinition>
                         <ColumnDefinition Width=".1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    
-                    <ListBox BorderThickness="0">
+
+                    <ListBox BorderThickness="0"
+                             SelectedItem="{Binding Fosil}"
+                             ItemsSource="{Binding Lista}"
+                             ItemTemplate="{StaticResource Plantilla}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.Resources>
+                          
+                        </ListBox.Resources>
 
                     </ListBox>
                     <!--#REGION BOTONES EDITAR Y ELIMINAR-->
                     <Border Grid.Column="1"
-                            Background="Red"
+                            Background="Gray"
                             BorderThickness="0">
+                        <StackPanel VerticalAlignment="Center">
+                            <Button Height="50"
+                                    Width="70"
+                                    Margin="0,0,0,5"></Button>
+                            <Button Height="50"
+                                    Width="70"
+                                    Name="btnEliminar"
+                                    Command="{Binding EliminarCommand}"
+                                    Margin="0,5,0,0"></Button>
+                        </StackPanel>
                     </Border>
                     <!--#ENDREGION BOTONES EDITAR Y ELIMINAR-->
                 </Grid>

@@ -14,7 +14,7 @@
         Background="Transparent">
 
     <Window.DataContext>
-        <viewmodels:PaleontologiaViewModel></viewmodels:PaleontologiaViewModel>
+        <viewmodels:PaleontologiaViewModel x:Name="pvm"></viewmodels:PaleontologiaViewModel>
     </Window.DataContext>
     <Window.Resources>
         <!--#REGION ESTILOS DEL BOTON-->
@@ -235,7 +235,8 @@
                         </StackPanel.Resources>
                         <!--#ENDREGION ESTILOS TEXBLOCK-->
 
-                        <Button Template="{DynamicResource EstilosBoton}"
+                            <!--#REGION BOTON HOME-->
+                            <Button Template="{DynamicResource EstilosBoton}"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Height="40" Width="200"
@@ -246,32 +247,34 @@
                                 Name="btnHome"
                                 Padding="0"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <StackPanel Orientation="Horizontal">
-                                <Border Background="White" 
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Background="White" 
                                         Height="40"
                                         Width="8"
                                         CornerRadius="10,0,10,0"
                                         Margin="5,0,0,0">
-                                    <Border.Resources>
-                                        <Style TargetType="Border">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
+                                        <Border.Resources>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
                                          Value="False">
-                                                    <Setter Property="Visibility" Value="Hidden" />
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=btnHome, Path=IsMouseOver}"
                                          Value="True">
-                                                    <Setter Property="Visibility" Value="Visible" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Resources>
-                                </Border>
-                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\home.png"></Image>
-                                <TextBlock>Home</TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <Button Template="{DynamicResource EstilosBoton}"
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Resources>
+                                    </Border>
+                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\home.png"></Image>
+                                    <TextBlock>Home</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <!--#ENDREGION BOTON HOME-->
+                            <!--#REGION BOTON COLECCION-->
+                            <Button Template="{DynamicResource EstilosBoton}"
                                 Background="Transparent"
                                 Command="{Binding CambiarVistaCommand, Mode=TwoWay}"
                                 CommandParameter="ColeccionVista"
@@ -283,68 +286,70 @@
                                 Padding="0"
                                 Margin="0,25,0,0"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <StackPanel Orientation="Horizontal">
-                                <Border Background="White" 
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Background="White" 
                                            Height="40"
                                            Margin="5,0,0,0"
                                            Width="8"
                                            CornerRadius="10,0,10,0">
-                                    <Border.Resources>
-                                        <Style TargetType="Border">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
+                                        <Border.Resources>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
                                          Value="False">
-                                                    <Setter Property="Visibility" Value="Hidden" />
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=btnColeccion, Path=IsMouseOver}"
                                          Value="True">
-                                                    <Setter Property="Visibility" Value="Visible" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Resources>
-                                </Border>
-                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\documentos.png"></Image>
-                                <TextBlock>Colección</TextBlock>
-                            </StackPanel>
-                        </Button>
-
-                        <!--#REGION BOTON AGREGAR-->
-                        <Button Template="{DynamicResource EstilosBoton}"
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Resources>
+                                    </Border>
+                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\documentos.png"></Image>
+                                    <TextBlock>Colección</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <!--#ENDREGION BOTON COLECCION-->
+                            <!--#REGION BOTON AGREGAR-->
+                            <Button Template="{DynamicResource EstilosBoton}"
                                 Background="Transparent"
-                                Command="{Binding AgregarCommand, Mode=TwoWay}"
+                                Command="{Binding CambiarVistaCommand, Mode=TwoWay}"
+                                CommandParameter="AgregarVista"
                                 BorderThickness="0"
                                 Height="40" Width="200"
                                 HorizontalContentAlignment="Left"
                                 Cursor="Hand"
+                                Margin="0,25,0,0"
                                 Padding="0"
                                 Name="btnAgregar"
-                                Margin="0,25,0,0"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <StackPanel Orientation="Horizontal">
-                                <Border Background="White" 
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Background="White" 
                                            Height="40"
                                            Margin="5,0,0,0"
                                            Width="8"
                                            CornerRadius="10,0,10,0">
-                                    <Border.Resources>
-                                        <Style TargetType="Border">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="False">
-                                                    <Setter Property="Visibility" Value="Hidden" />
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Resources>
-                                </Border>
-                                <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\agregar.png"></Image>
-                                <TextBlock>Agregar</TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <!--#ENDREGION BOTON AGREGAR-->
+                                        <Border.Resources>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="False">
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=btnAgregar, Path=IsMouseOver}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Resources>
+                                    </Border>
+                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\agregar.png"></Image>
+                                    <TextBlock>Agregar</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <!--#ENDREGION BOTON AGREGAR-->
+
                     </StackPanel>
                     <!--#ENDREGION BOTONES MENU-->
                 </StackPanel>

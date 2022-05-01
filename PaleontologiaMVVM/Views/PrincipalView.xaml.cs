@@ -40,7 +40,6 @@ namespace PaleontologiaMVVM.Views
             {
                 this.DragMove();
             }
-          
         }
 
 
