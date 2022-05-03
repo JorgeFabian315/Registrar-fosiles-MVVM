@@ -44,9 +44,8 @@
         <!--#ENDREGION ESTILOS BOTON-->    
     </Window.Resources>
     <Border Background="GhostWhite">
-        
         <Grid>
-            <Grid Background="Transparent"
+            <Grid  
                   HorizontalAlignment="Right"
                   Width="925">
                 <Grid.RowDefinitions>
@@ -74,22 +73,17 @@
                                 <DataTrigger Binding="{Binding Vista}" Value="AgregarVista">
                                     <Setter Property="Content" Value="{StaticResource Agregar}" />
                                 </DataTrigger>
+                                <DataTrigger Binding="{Binding Vista}" Value="EditarVista">
+                                    <Setter Property="Content" Value="{StaticResource Agregar}" />
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                         <!--#ENDREGION VISTAS-->
                     </ContentControl.Resources>
-
                 </ContentControl>
                 <!--#ENDREGION CONTENIDO-->
         <!--#REGION BOTONES DE WINDOW-->
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.3,0">
-                            <GradientStop Color="#FF222222" Offset="0"></GradientStop>
-                            <GradientStop Color="#FF222222" Offset="1"></GradientStop>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                </Border>
+                <Border Background="#252b31"></Border>
                 <WrapPanel VerticalAlignment="Center"
                            HorizontalAlignment="Right"
                            Grid.Row="0">
@@ -123,8 +117,9 @@
                     Grid.RowSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="#FF222222" Offset="0"></GradientStop>
-                            <GradientStop Color="#6d6d6d" Offset="1"></GradientStop>
+                            <GradientStop Color="#252b31" Offset="0"></GradientStop>
+                            <GradientStop Color="#5e6668" Offset="0.5"></GradientStop>
+                            <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
                         </LinearGradientBrush>
                     </Border.Background>
                 </Border>
@@ -133,7 +128,7 @@
                 <StackPanel Grid.RowSpan="2">
                     <!--#REGION IMAGEN USUARIO-->
                  <WrapPanel Width="200" Margin="0,10,0,0">
-                        <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\usuario.png"
+                        <Image Source="../Assets/user.png"
                                VerticalAlignment="Center"
                                Width="40"
                                Height="40"
@@ -246,7 +241,7 @@
                                 Cursor="Hand"
                                 Name="btnHome"
                                 Padding="0"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                >
                                 <StackPanel Orientation="Horizontal">
                                     <Border Background="White" 
                                         Height="40"
@@ -268,7 +263,7 @@
                                             </Style>
                                         </Border.Resources>
                                     </Border>
-                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\home.png"></Image>
+                                    <Image Margin="5,0,0,0" Source="../Assets/Home.png"></Image>
                                     <TextBlock>Home</TextBlock>
                                 </StackPanel>
                             </Button>
@@ -284,8 +279,7 @@
                                 HorizontalContentAlignment="Left"
                                 Cursor="Hand"
                                 Padding="0"
-                                Margin="0,25,0,0"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                Margin="0,25,0,0">
                                 <StackPanel Orientation="Horizontal">
                                     <Border Background="White" 
                                            Height="40"
@@ -307,7 +301,7 @@
                                             </Style>
                                         </Border.Resources>
                                     </Border>
-                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\documentos.png"></Image>
+                                    <Image Margin="5,0,0,0" Source="../Assets/coleccion.png"></Image>
                                     <TextBlock>Colección</TextBlock>
                                 </StackPanel>
                             </Button>
@@ -323,8 +317,7 @@
                                 Cursor="Hand"
                                 Margin="0,25,0,0"
                                 Padding="0"
-                                Name="btnAgregar"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                Name="btnAgregar">
                                 <StackPanel Orientation="Horizontal">
                                     <Border Background="White" 
                                            Height="40"
@@ -344,7 +337,7 @@
                                             </Style>
                                         </Border.Resources>
                                     </Border>
-                                    <Image Margin="5,0,0,0" Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\agregar.png"></Image>
+                                    <Image Margin="5,0,0,0" Source="../Assets/agregar.png" ></Image>
                                     <TextBlock>Agregar</TextBlock>
                                 </StackPanel>
                             </Button>

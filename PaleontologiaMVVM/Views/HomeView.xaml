@@ -7,26 +7,43 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="925">
         <Grid>
-            <Image Source="C:\Users\Fabian\Documents\Proyectos XAML\PaleontologiaMVVM\PaleontologiaMVVM\Assets\Dinosaurio.jpg"
+            <Image Source="../Assets/Fondo3.jpg"
                    Stretch="UniformToFill">
             </Image>
             <Border Background="Black"
-                    Opacity="0.5">
+                    Opacity="0.3">
             </Border>
-            <TextBlock FontSize="80"
-                       FontFamily="../Assets/#Libre Bodoni"
-                       Margin="20,0,0,10"
-                       VerticalAlignment="Bottom"
-                       Foreground="GhostWhite">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="50"
+
+        <Border Margin="30,0,0,20"
+                VerticalAlignment="Bottom"
+                Background="#252b31"
+                Width="550"
+                Height="170"
+                CornerRadius="10"
+                HorizontalAlignment="Left"
+                Opacity="0.7">
+            
+        </Border>
+
+
+        <TextBlock FontSize="50"
+                   Margin="45,0,0,40"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Left"
+                   FontFamily="../Assets/#Champagne &amp; Limousines"
+                   Foreground="GhostWhite">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="50"
                                       Color="#000000"
                                       ShadowDepth="1">
-                        
-                    </DropShadowEffect>
-                </TextBlock.Effect>
-                <!--Huellas <LineBreak/>del pasado-->
+
+                </DropShadowEffect>
+            </TextBlock.Effect>
+                Bienvenidos a <LineBreak/> <TextBlock Foreground="White"
+                                                      FontWeight="Bold"
+                                                      FontSize="65">Huellas del pasado</TextBlock> 
             </TextBlock>
-        </Grid>
+
+    </Grid>
     
 </UserControl>

@@ -7,12 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="620" d:DesignWidth="925">
     <Grid 
-          Margin="5">
+          Margin="0">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0,1">
-                <GradientStop Color="#384747" Offset="0"></GradientStop>
-                <GradientStop Color="#141e1b" Offset="0.5"></GradientStop>
-                <GradientStop Color="#1e2836" Offset="1"></GradientStop>
+                <GradientStop Color="#5e6668" Offset="0"></GradientStop>
+                <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -20,116 +19,214 @@
             <RowDefinition Height=".9*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="FontSize" Value="45" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
-            </Style>
             <Style TargetType="StackPanel">
                 <Setter Property="Margin" Value="0,15" />
             </Style>
         </Grid.Resources>
         <!--#REGION TITULO AGREGAR-->
-        <Border Background="#384747" 
+        <Border Background="#001219" 
                     BorderThickness="0">
-                <TextBlock Text="Agregar fosil"></TextBlock>
+            <TextBlock Text="Agregar fósil"
+                       Foreground="White"
+                       FontSize="40"
+                       FontFamily="../Assets/#Champagne &amp; Limousines"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"></TextBlock>
             </Border>
         <!--#ENDREGION TITULO AGREGAR-->
         
         <Grid Grid.Row="1"
               Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".7*"></ColumnDefinition>
-                <ColumnDefinition Width=".3*"></ColumnDefinition>
+                <ColumnDefinition Width="245"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height=".9*"></RowDefinition>
+                <RowDefinition Height=".45*"></RowDefinition>
+                <RowDefinition Height=".40*"></RowDefinition>
                 <RowDefinition Height=".1*"></RowDefinition>
             </Grid.RowDefinitions>
-            
-
-            <StackPanel Margin="5">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30">Nombre:</TextBlock>
-                    <TextBox Width="350"
-                             Text="{Binding Fosil.Nombre}"
-                             FontSize="25"
-                             BorderThickness="0,0,0,2"
-                             Margin="20,0,0,0"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30">Imagen:</TextBlock>
-                    <TextBox Width="350"
-                             Text="{Binding Fosil.Imagen}"
-                             Name="txtImagen"
-                             FontSize="25"
-                             BorderThickness="0,0,0,2"
-                             Margin="20,0,0,0"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30">Año descubrimiento:</TextBlock>
-                    <TextBox Width="300"
-                             FontSize="25"
-                             BorderThickness="0,0,0,2"
-                             Text="{Binding Fosil.Año}"
-                             Margin="20,0,0,0"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="30"
-                               HorizontalAlignment="Left">Descripcion:</TextBlock>
-                    <TextBox Width="650"
-                             HorizontalAlignment="Left"
-                             AcceptsReturn="True"
-                             FontSize="25"
-                             Text="{Binding Fosil.Descripcion}"
-                             BorderBrush="Black"
-                             Height="200"
-                             Margin="0,10,0,0"></TextBox>
-                </StackPanel>
+            <!--#REGION TEXTOS-->
+            <StackPanel HorizontalAlignment="Left">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="FontSize" Value="30" />
+                        <Setter Property="Margin" Value="10,10,0,15" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Nombre:"></TextBlock>
+                <TextBlock Text="Imagen:" ></TextBlock>
+                <TextBlock Text="Año:" ></TextBlock>
+                <TextBlock Text="Descripción:"></TextBlock>
             </StackPanel>
-
-            <StackPanel Grid.Column="1" 
-                        VerticalAlignment="Top"
-                        Margin="0">
+            <!--#ENDREGION TEXTOS-->
+            <!--#REGION TEXTBOX-->
+            <StackPanel Grid.Column="1">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Margin" Value="10,10,0,15" />
+                        <Setter Property="FontSize" Value="30" />
+                        <Setter Property="BorderThickness" Value="0,0,0,5" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="Background" Value="GhostWhite" />
+                        <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding Fosil.Nombre}"></TextBox>
+                <TextBox Text="{Binding Fosil.Imagen}"
+                         Name="txtImagen"></TextBox>
+                <TextBox Text="{Binding Fosil.Año}"></TextBox>
+            </StackPanel>
+            <TextBox Grid.Row="1"
+                     Text="{Binding Fosil.Descripcion}"
+                     Grid.ColumnSpan="2"
+                     Height="200"
+                     VerticalAlignment="Top"
+                     Grid.RowSpan="2"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     TextAlignment="Justify"></TextBox>
+            <!--#ENDREGION TEXTBOX-->
+            <!--#REGION IMAGEN-->
+            <StackPanel Grid.Column="2" 
+                        VerticalAlignment="Center"
+                        Width="300"
+                        Margin="35,0,0,0">
                 <TextBlock FontSize="15"
-                           Margin="0,0,0,20">Vista previa</TextBlock>
-                <Ellipse Width="220"
-                         Height="200">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding ElementName=txtImagen, Path=Text}"></ImageBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="1"></DropShadowEffect>
-                    </Ellipse.Effect>
-                </Ellipse>
+                           Margin="0,0,0,20"
+                           FontFamily="../Assets/#Champagne &amp; Limousines"
+                           Foreground="White"
+                           HorizontalAlignment="Center">Vista previa</TextBlock>
+                <Image Width="220"
+                       Height="200"
+                       Stretch="UniformToFill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Source" Value="{Binding ElementName=txtImagen, Path=Text}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=txtImagen, Path=Text}" Value="">
+                                    <Setter Property="Source" Value="../Assets/imagen.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
             </StackPanel>
-            <!--#REGION BOTON AGREGAR-->
-            <Button Grid.Row="1" 
-                    Grid.Column="1"
-                    Width="150"
-                    Height="50"
-                    Command="{Binding AgregarCommand}"
-                    BorderThickness="0"
-                    Background="Gray"
-                    HorizontalAlignment="Right"
-                    Cursor="Hand">
-                <WrapPanel>
-                    <Image Source="https://cdn.icon-icons.com/icons2/1077/PNG/512/add_77928.png"
-                           Width="35"
-                           Margin="0,0,10,0"></Image>
-                    <TextBlock 
-                               FontSize="25"
-                               Foreground="White">Agregar</TextBlock>
-                </WrapPanel>
-            </Button>
+            <!--#ENDREGION IMAGEN-->
+            <!--#REGION BOTONES-->
+            <WrapPanel Grid.Row="2"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2">
+                <WrapPanel.Resources>
+                    <Style TargetType="Button">
+                        
+                    </Style>
+                </WrapPanel.Resources>
+                <Button>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Width" Value="150" />
+                            <Setter Property="Height" Value="50" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontSize" Value="25" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
+                            <Setter Property="Background" Value="#252b31" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        
+                                        <Border CornerRadius="10"
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}">
+                                            <TextBlock VerticalAlignment="Center"
+                                                       Name="txtGuardar"
+                                                       HorizontalAlignment="Center">Guardar</TextBlock>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#252b31" />
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.4,1">
+                                                            <GradientStop Color="#5e6668" Offset="0"></GradientStop>
+                                                            <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Vista}" Value="AgregarVista">
+                                    <Setter Property="Command" Value="{Binding AgregarCommand}" />
+                                   
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Vista}" Value="EditarVista">
+                                    <Setter Property="Command" Value="{Binding EditarCommand}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Command="{Binding CancelarCommand}" Margin="0,0,10,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Width" Value="150" />
+                            <Setter Property="Height" Value="50" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontSize" Value="25" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
+                            <Setter Property="Background" Value="#252b31" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+
+                                        <Border CornerRadius="10"
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}">
+                                            <TextBlock VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center">Cancelar</TextBlock>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#252b31" />
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.4,1">
+                                                            <GradientStop Color="#5e6668" Offset="0"></GradientStop>
+                                                            <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </WrapPanel>
             <TextBlock Grid.Column="0"
-                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="2"
+                       HorizontalAlignment="Center"
                        Foreground="Red"
-                       FontSize="25"
+                       VerticalAlignment="Center"
+                       FontSize="20"
                        Text="{Binding Error}"></TextBlock>
-            <!--#ENDREGION BOTON AGREGAR-->
+            <!--#ENDREGION BOTONES-->
         </Grid>
     </Grid>
 </UserControl>

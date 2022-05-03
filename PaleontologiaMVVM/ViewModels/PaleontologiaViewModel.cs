@@ -53,6 +53,7 @@ namespace PaleontologiaMVVM.ViewModels
             if (Fosil != null)
             {
                 Lista[posicionelementomodificado] = Fosil;
+                GuardarArchivo();
                 Cancelar();
             }
         }

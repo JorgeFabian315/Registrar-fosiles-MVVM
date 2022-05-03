@@ -8,7 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\agregar.png" />
+    <None Remove="Assets\Basura.png" />
     <None Remove="Assets\Champagne &amp; Limousines.ttf" />
+    <None Remove="Assets\coleccion.png" />
+    <None Remove="Assets\Editar.png" />
+    <None Remove="Assets\fondo.jpg" />
+    <None Remove="Assets\Fondo2.jpg" />
+    <None Remove="Assets\fondo3.jpg" />
+    <None Remove="Assets\Home.png" />
+    <None Remove="Assets\imagen.png" />
+    <None Remove="Assets\selva.jpg" />
+    <None Remove="Assets\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\agregar.png" />
+    <Resource Include="Assets\Basura.png" />
+    <Resource Include="Assets\coleccion.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +35,14 @@
 
   <ItemGroup>
     <Resource Include="Assets\Champagne &amp; Limousines.ttf" />
+    <Resource Include="Assets\Editar.png" />
+    <Resource Include="Assets\fondo.jpg" />
+    <Resource Include="Assets\Fondo2.jpg" />
+    <Resource Include="Assets\fondo3.jpg" />
+    <Resource Include="Assets\Home.png" />
+    <Resource Include="Assets\imagen.png" />
+    <Resource Include="Assets\selva.jpg" />
+    <Resource Include="Assets\user.png" />
   </ItemGroup>
 
 </Project>

@@ -4,5 +4,6 @@
              xmlns:local="clr-namespace:PaleontologiaMVVM"
              StartupUri="Views/PrincipalView.xaml">
     <Application.Resources>
+        
     </Application.Resources>
 </Application>
