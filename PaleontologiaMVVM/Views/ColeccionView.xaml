@@ -135,7 +135,7 @@
                                     </Style.Triggers>
                                 </Style>
                                 <Style TargetType="ToolTip">
-                                    <Setter Property="Background" Value="#d49c6b" />
+                                    <Setter Property="Background" Value="#6c0503" />
                                     <Setter Property="BorderThickness" Value="0" />
                                     <Setter Property="Width" Value="70" />
                                     <Setter Property="Height" Value="30" />

@@ -86,6 +86,8 @@
                      Text="{Binding Fosil.Descripcion}"
                      Grid.ColumnSpan="2"
                      Height="200"
+                     FontFamily="../Assets/#Champagne &amp; Limousines"
+                     FontSize="30"
                      VerticalAlignment="Top"
                      Grid.RowSpan="2"
                      AcceptsReturn="True"
@@ -104,7 +106,7 @@
                            HorizontalAlignment="Center">Vista previa</TextBlock>
                 <Image Width="220"
                        Height="200"
-                       Stretch="UniformToFill">
+                       Stretch="Fill">
                     <Image.Resources>
                         <Style TargetType="Image">
                             <Setter Property="Source" Value="{Binding ElementName=txtImagen, Path=Text}" />
@@ -152,12 +154,11 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#252b31" />
                                                 <Setter Property="Background">
                                                     <Setter.Value>
                                                         <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.4,1">
-                                                            <GradientStop Color="#5e6668" Offset="0"></GradientStop>
-                                                            <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
+                                                            <GradientStop Color="#003700" Offset="0"></GradientStop>
+                                                            <GradientStop Color="#67a030" Offset="1"></GradientStop>
                                                         </LinearGradientBrush>
                                                     </Setter.Value>
                                                 </Setter>
@@ -178,7 +179,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Command="{Binding CancelarCommand}" Margin="0,0,10,0">
+                <Button Command="{Binding CancelarCommand}">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Width" Value="150" />
@@ -194,18 +195,18 @@
 
                                         <Border CornerRadius="10"
                                                 x:Name="border"
+                                                Margin="10,0,0,0"
                                                 Background="{TemplateBinding Background}">
                                             <TextBlock VerticalAlignment="Center"
                                                        HorizontalAlignment="Center">Cancelar</TextBlock>
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#252b31" />
                                                 <Setter Property="Background">
                                                     <Setter.Value>
                                                         <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.4,1">
-                                                            <GradientStop Color="#5e6668" Offset="0"></GradientStop>
-                                                            <GradientStop Color="#c1c8c7" Offset="1"></GradientStop>
+                                                            <GradientStop Color="#6c0503" Offset="0"></GradientStop>
+                                                            <GradientStop Color="#d02a2a" Offset="1"></GradientStop>
                                                         </LinearGradientBrush>
                                                     </Setter.Value>
                                                 </Setter>

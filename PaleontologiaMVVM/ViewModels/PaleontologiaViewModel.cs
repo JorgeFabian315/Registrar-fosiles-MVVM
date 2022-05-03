@@ -92,6 +92,15 @@ namespace PaleontologiaMVVM.ViewModels
                     Evento("Error");
                     return;
                 }
+
+                if ((from f in Lista
+                     where f.Nombre == Fosil.Nombre
+                     select f.Nombre).Any())
+                {
+                    Error = "El nombre del fosil ya existe en el inventario actual";
+                    Evento("Error");
+                    return;
+                }
                 if (string.IsNullOrEmpty(Fosil.Imagen))
                 {
                     Error = "Por favor rellene el espacio vacio imagen";
@@ -117,6 +126,13 @@ namespace PaleontologiaMVVM.ViewModels
             }
         }
         private int posicionelementomodificado;
+        public int Posicion
+        {
+            get { return posicionelementomodificado; }
+            set { posicionelementomodificado = value;
+                Evento("Posicion");
+            }
+        }
         public void CambiarVista(string vista)
         {
             Vista = vista;
