@@ -305,19 +305,10 @@
                            Foreground="#373737"
                            HorizontalAlignment="Center">
                 </TextBlock>
-                <Image Source="{Binding ElementName=txtimagen, Path=Text}"
-                       Width="250"
-                       Stretch="Fill"
-                       Height="200">
-                    <Image.Resources>
-                        <Style TargetType="Image">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=txtimagen, Path=Text}" Value="">
-                                    <Setter Property="Source" Value="../Assets/imagen.png" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Resources>
+                <Image Width="250"
+                       Height="200"
+                       Source="{Binding ElementName=txtimagen, Path=Text}"
+                       Stretch="Fill">
                 </Image>
             </StackPanel>
             <!--#ENDREGION VISTA PREVIA-->

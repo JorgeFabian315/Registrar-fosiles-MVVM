@@ -7,17 +7,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="370" d:DesignWidth="900">
 
-    <StackPanel>
-        <Image Height="100"
+    <Border CornerRadius="10" Width="110"
+            Height="135">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#373737" Offset="0"></GradientStop>
+                <GradientStop Color="#5d5e60" Offset="0.5"></GradientStop>
+                <GradientStop Color="#848388" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ></DropShadowEffect>
+        </Border.Effect>
+        <StackPanel VerticalAlignment="Center">
+            <Ellipse Height="100"
                Width="100"
                Stretch="Fill"
                HorizontalAlignment="Center"
-               Source="{Binding Imagen}"></Image>
-        <TextBlock Text="{Binding Nombre}" 
-                   Foreground="Black"
+               >
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Imagen}"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Text="{Binding Nombre}" 
+                   Foreground="White"
                    FontFamily="../Assets/#Champagne &amp; Limousines"
                    FontSize="20"
                    TextAlignment="Center"
                    TextWrapping="Wrap"></TextBlock>
-    </StackPanel>
+        </StackPanel>
+    </Border>
 </UserControl>

@@ -14,13 +14,8 @@
     <None Remove="Assets\cerrar.png" />
     <None Remove="Assets\Champagne &amp; Limousines.ttf" />
     <None Remove="Assets\coleccion.png" />
-    <None Remove="Assets\dinosaurio2.jpg" />
     <None Remove="Assets\dinosaurio3.jpg" />
-    <None Remove="Assets\dinosaurio4.jpg" />
     <None Remove="Assets\Editar.png" />
-    <None Remove="Assets\fondo3.jpg" />
-    <None Remove="Assets\fondo4.jpg" />
-    <None Remove="Assets\fondoagregar.png" />
     <None Remove="Assets\Home.png" />
     <None Remove="Assets\imagen.png" />
     <None Remove="Assets\imagenurl.png" />
@@ -28,7 +23,6 @@
     <None Remove="Assets\minimizar.png" />
     <None Remove="Assets\nombre.png" />
     <None Remove="Assets\selva.jpg" />
-    <None Remove="Assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,13 +40,8 @@
 
   <ItemGroup>
     <Resource Include="Assets\Champagne &amp; Limousines.ttf" />
-    <Resource Include="Assets\dinosaurio2.jpg" />
     <Resource Include="Assets\dinosaurio3.jpg" />
-    <Resource Include="Assets\dinosaurio4.jpg" />
     <Resource Include="Assets\Editar.png" />
-    <Resource Include="Assets\fondo3.jpg" />
-    <Resource Include="Assets\fondo4.jpg" />
-    <Resource Include="Assets\fondoagregar.png" />
     <Resource Include="Assets\Home.png" />
     <Resource Include="Assets\imagen.png" />
     <Resource Include="Assets\imagenurl.png" />
@@ -60,7 +49,6 @@
     <Resource Include="Assets\minimizar.png" />
     <Resource Include="Assets\nombre.png" />
     <Resource Include="Assets\selva.jpg" />
-    <Resource Include="Assets\user.png" />
   </ItemGroup>
 
 </Project>
