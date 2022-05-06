@@ -24,6 +24,10 @@ namespace PaleontologiaMVVM.Views
         {
             InitializeComponent();
         }
-    
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarConfirmar.Visibility = Visibility.Visible;
+        }
     }
 }

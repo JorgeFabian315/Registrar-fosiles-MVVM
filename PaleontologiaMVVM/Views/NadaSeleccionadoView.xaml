@@ -16,9 +16,10 @@
                 Opacity="0.4"></Border>
         <TextBlock FontFamily="../Assets/#Champagne &amp; Limousines"
                    Foreground="White"
-                   Text="No se ha seleccionado ningun elemento"
+                   Text="Selecciona un elemento para ver sus características "
                    TextWrapping="Wrap"
                    FontSize="80"
+                   Margin="10,0"
                    TextAlignment="Center"
                    VerticalAlignment="Center"></TextBlock>
     </Grid>

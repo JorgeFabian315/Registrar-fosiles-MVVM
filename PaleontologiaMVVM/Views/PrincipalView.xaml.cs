@@ -47,5 +47,7 @@ namespace PaleontologiaMVVM.Views
         {
             btnMenu.IsChecked = false;
         }
+
+      
     }
 }

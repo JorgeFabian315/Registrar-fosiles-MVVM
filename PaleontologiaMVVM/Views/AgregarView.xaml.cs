@@ -24,5 +24,66 @@ namespace PaleontologiaMVVM.Views
         {
             InitializeComponent();
         }
+
+        private void textNombre_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtNombre.Focus();
+        }
+
+        private void txtNombre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtNombre.Text) && txtNombre.Text.Length > 0)
+            {
+                textNombre.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textNombre.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void textimagen_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtimagen.Focus();
+        }
+
+        private void txtimagen_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtimagen.Text) && txtimagen.Text.Length > 0)
+            {
+                textimagen.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textimagen.Visibility = Visibility.Visible;
+            }
+
+
+        }
+
+        private void textAño_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtAño.Focus();
+        }
+
+        private void txtAño_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAño.Text) && txtAño.Text.Length > 0)
+            {
+                textAño.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textAño.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtAño_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
     }
 }

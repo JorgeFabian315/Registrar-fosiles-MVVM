@@ -23,7 +23,9 @@ namespace PaleontologiaMVVM.ViewModels
         public Fosil? Fosil
         {
             get { return fosil; }
-            set { fosil = value;
+            set
+            {
+                fosil = value;
                 Evento("Fosil");
 
             }
@@ -32,7 +34,7 @@ namespace PaleontologiaMVVM.ViewModels
 
         public string Vista { get; set; } = "HomeVista";
         public string Error { get; set; } = "";
-
+        public bool DesbloquearBotones { get; set; } = true;
         public ICommand CambiarVistaCommand { get; set; }
         public ICommand AgregarCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
@@ -52,7 +54,40 @@ namespace PaleontologiaMVVM.ViewModels
         {
             if (Fosil != null)
             {
+                if (string.IsNullOrEmpty(Fosil.Nombre))
+                {
+                    Error = "Por favor rellene el espacio vacio Nombre";
+                    Evento("Error");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Fosil.Descripcion))
+                {
+                    Error = "Por favor rellene el espacio vacio descripcion";
+                    Evento("Error");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Fosil.Imagen))
+                {
+                    Error = "Por favor rellene el espacio vacio imagen";
+                    Evento("Error");
+                    return;
+                }
+                if (Fosil.Año == 0)
+                {
+                    Error = "El año tiene que ser mayor a 0";
+                    Evento("Error");
+                    return;
+                }
+                if (!Uri.TryCreate(Fosil.Imagen, UriKind.Absolute, out var uri))
+                {
+                    Error = "Escriba una URL de la imagen valida";
+                    Evento("Error");
+                    return;
+                }
+
                 Lista[posicionelementomodificado] = Fosil;
+                Error = "";
                 GuardarArchivo();
                 Cancelar();
             }
@@ -60,13 +95,15 @@ namespace PaleontologiaMVVM.ViewModels
 
         private void Cancelar()
         {
+            DesbloquearBotones = true;
+            Evento("DesbloquearBotones");
             Fosil = null;
             CambiarVista("ColeccionVista");
         }
 
         private void Eliminar()
         {
-            if(Fosil != null)
+            if (Fosil != null)
             {
                 Lista.Remove(Fosil);
                 Evento();
@@ -77,7 +114,7 @@ namespace PaleontologiaMVVM.ViewModels
         private void Agregar()
         {
 
-            if(Fosil != null)
+            if (Fosil != null)
             {
 
                 if (string.IsNullOrEmpty(Fosil.Nombre))
@@ -113,37 +150,37 @@ namespace PaleontologiaMVVM.ViewModels
                     Evento("Error");
                     return;
                 }
-                if(!Uri.TryCreate(Fosil.Imagen, UriKind.Absolute, out var uri))
+                if (!Uri.TryCreate(Fosil.Imagen, UriKind.Absolute, out var uri))
                 {
                     Error = "Escriba una URL de la imagen valida";
                     Evento("Error");
                     return;
                 }
 
-                    Lista.Add(Fosil);
-                    CambiarVista("ColeccionVista");
-                    GuardarArchivo();
+                Lista.Add(Fosil);
+                CambiarVista("ColeccionVista");
+                DesbloquearBotones = true;
+                Error = "";
+                GuardarArchivo();
             }
         }
         private int posicionelementomodificado;
-        public int Posicion
-        {
-            get { return posicionelementomodificado; }
-            set { posicionelementomodificado = value;
-                Evento("Posicion");
-            }
-        }
+
         public void CambiarVista(string vista)
         {
             Vista = vista;
             Evento();
             if (Vista == "AgregarVista")
             {
+                DesbloquearBotones = false;
+                Evento("DesbloquearBotones");
                 Fosil = new Fosil();
             }
-            if(Vista == "EditarVista")
+            if (Vista == "EditarVista")
             {
-                if(Fosil != null)
+                DesbloquearBotones = false;
+                Evento("DesbloquearBotones");
+                if (Fosil != null)
                 {
                     var clon = new Fosil()
                     {
@@ -161,7 +198,7 @@ namespace PaleontologiaMVVM.ViewModels
         public void GuardarArchivo()
         {
             var json = JsonConvert.SerializeObject(Lista);
-            File.WriteAllText("Fosiles.json", json);  
+            File.WriteAllText("Fosiles.json", json);
         }
 
         public void CargarArchivo()

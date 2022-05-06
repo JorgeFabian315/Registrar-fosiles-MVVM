@@ -6,20 +6,19 @@
              xmlns:local="clr-namespace:PaleontologiaMVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="925">
+    <UserControl.Resources>
+    
+    </UserControl.Resources>
         <Grid>
-            <Image Source="../Assets/Fondo3.jpg"
-                   Stretch="UniformToFill">
+            <Image Source="../Assets/dinosaurio3.jpg"
+                   Stretch="Fill">
             </Image>
-            <Border Background="Black"
-                    Opacity="0.3">
-            </Border>
-
         <Border Margin="30,0,0,20"
                 VerticalAlignment="Bottom"
-                Background="#252b31"
+                Background="#373737"
                 Width="550"
                 Height="170"
-                CornerRadius="10"
+                CornerRadius="20"
                 HorizontalAlignment="Left"
                 Opacity="0.7">
             
