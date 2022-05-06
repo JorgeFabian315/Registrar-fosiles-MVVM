@@ -16,11 +16,11 @@ namespace PaleontologiaMVVM.ViewModels
     public class PaleontologiaViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public ObservableCollection<Fosil> Lista { get; set; } = new ObservableCollection<Fosil>();
+        public ObservableCollection<Fosil> Lista { get; set; } = new ObservableCollection<Fosil>();//Lista de los fosiles
 
-        private Fosil? fosil;
+        private Fosil? fosil; // Fosil 
 
-        public Fosil? Fosil
+        public Fosil? Fosil// Fosil seleccionado
         {
             get { return fosil; }
             set
@@ -32,9 +32,10 @@ namespace PaleontologiaMVVM.ViewModels
         }
 
 
-        public string Vista { get; set; } = "HomeVista";
-        public string Error { get; set; } = "";
-        public bool DesbloquearBotones { get; set; } = true;
+        public string Vista { get; set; } = "HomeVista"; // Vista 
+        public string Error { get; set; } = ""; // Mensaje de error
+        public bool DesbloquearBotones { get; set; } = true; // Desbloquear los botones del menu (home y coleccion)
+        // Comandos
         public ICommand CambiarVistaCommand { get; set; }
         public ICommand AgregarCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
@@ -56,20 +57,20 @@ namespace PaleontologiaMVVM.ViewModels
             {
                 if (string.IsNullOrEmpty(Fosil.Nombre))
                 {
-                    Error = "Por favor rellene el espacio vacio Nombre";
+                    Error = "Por favor llene el espacio vacío nombre";
                     Evento("Error");
                     return;
                 }
                 if (string.IsNullOrEmpty(Fosil.Descripcion))
                 {
-                    Error = "Por favor rellene el espacio vacio descripcion";
+                    Error = "Por favor llene el espacio vacio descripción";
                     Evento("Error");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Fosil.Imagen))
                 {
-                    Error = "Por favor rellene el espacio vacio imagen";
+                    Error = "Por favor llene el espacio vacio imagen";
                     Evento("Error");
                     return;
                 }
@@ -95,7 +96,7 @@ namespace PaleontologiaMVVM.ViewModels
 
         private void Cancelar()
         {
-            DesbloquearBotones = true;
+            DesbloquearBotones = true; // Desbloquear botones 
             Evento("DesbloquearBotones");
             Fosil = null;
             CambiarVista("ColeccionVista");
@@ -119,13 +120,13 @@ namespace PaleontologiaMVVM.ViewModels
 
                 if (string.IsNullOrEmpty(Fosil.Nombre))
                 {
-                    Error = "Por favor rellene el espacio vacio Nombre";
+                    Error = "Por favor rellene el espacio vacio nombre";
                     Evento("Error");
                     return;
                 }
                 if (string.IsNullOrEmpty(Fosil.Descripcion))
                 {
-                    Error = "Por favor rellene el espacio vacio descripcion";
+                    Error = "Por favor rellene el espacio vacio descripción";
                     Evento("Error");
                     return;
                 }
@@ -134,13 +135,13 @@ namespace PaleontologiaMVVM.ViewModels
                      where f.Nombre == Fosil.Nombre
                      select f.Nombre).Any())
                 {
-                    Error = "El nombre del fosil ya existe en el inventario actual";
+                    Error = "El nombre del fósil ya está registrado";
                     Evento("Error");
                     return;
                 }
                 if (string.IsNullOrEmpty(Fosil.Imagen))
                 {
-                    Error = "Por favor rellene el espacio vacio imagen";
+                    Error = "Por favor llene el espacio vacío imagen";
                     Evento("Error");
                     return;
                 }
@@ -201,6 +202,7 @@ namespace PaleontologiaMVVM.ViewModels
             File.WriteAllText("Fosiles.json", json);
         }
 
+        // Cargar el archivo json
         public void CargarArchivo()
         {
             if (File.Exists("Fosiles.json"))
@@ -214,6 +216,7 @@ namespace PaleontologiaMVVM.ViewModels
 
             }
         }
+        // Evento actualizar
         public void Evento(string? propiedad = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propiedad));

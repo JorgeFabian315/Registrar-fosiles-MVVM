@@ -85,5 +85,14 @@ namespace PaleontologiaMVVM.Views
             else
                 e.Handled = true;
         }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txtAño.Text = "";
+            txtimagen.Text = "";
+            txtNombre.Text = "";
+            txtdescripcion.Text = "";
+
+        }
     }
 }

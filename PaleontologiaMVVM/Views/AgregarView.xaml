@@ -7,13 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="620" d:DesignWidth="925">
     <Border CornerRadius="20"
-            Margin="10">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                <GradientStop Color="GhostWhite" Offset="0"></GradientStop>
-                <GradientStop Color="GhostWhite" Offset="1"></GradientStop>
-            </LinearGradientBrush>
-        </Border.Background>
+            Margin="10"
+            Background="GhostWhite">
         <!--#REGION GRID PADRE-->
         <Grid>
             <Grid.RowDefinitions>
@@ -139,6 +134,7 @@
                                    Margin="10">Descripción</TextBlock>
                         <TextBox Style="{StaticResource estilotextbox}"
                                  Width="410"
+                                 Name="txtdescripcion"
                                  Foreground="Black"
                                  Text="{Binding Fosil.Descripcion}"
                                  Height="150"
@@ -148,14 +144,16 @@
                                  Margin="20,0,0,0"></TextBox>
                     </StackPanel>
                 </Border>
-            <!--#REGION AGREGAR INFORMACION-->
+            <!--#ENDREGION AGREGAR INFORMACION-->
             <!--#REGION BOTON GUARDAR Y ELIMINAR-->
             <WrapPanel Grid.Row="4"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0,0,20,0"
                        Grid.Column="2"
+                       Grid.RowSpan="2"
                        Grid.ColumnSpan="2">
+               
                 <!--#REGION BOTON GUARDDAR-->
                 <Button>
                     <Button.Style>
@@ -249,6 +247,54 @@
                 <!--#ENDREGION BOTON CANCELAR-->
             </WrapPanel>
             <!--#ENDREGION BOTON GUARDAR Y ELIMINAR-->
+            <!--#REGION BOTON LIMPIAR-->
+            <Button Grid.Column="1"
+                    Grid.Row="2"
+                    Name="btnLimpiar"
+                    Click="btnLimpiar_Click"
+                    Margin="0,0,20,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="110" />
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="25" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="FontFamily" Value="../Assets/#Champagne &amp; Limousines" />
+                        <Setter Property="Background" Value="#252b31" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+
+                                    <Border CornerRadius="10"
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}">
+                                        <TextBlock VerticalAlignment="Center"
+                                                       Name="txtGuardar"
+                                                       HorizontalAlignment="Center">Limpiar</TextBlock>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="#4c44cf" Offset="0"></GradientStop>
+                                                        <GradientStop Color="#e953da" Offset="1"></GradientStop>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!--#ENDREGION BOTON LIMPIAR-->
+            <!--#REGION VISTA PREVIA-->
             <StackPanel Grid.Column="1"
                         Grid.Row="1"
                         Grid.RowSpan="2">
@@ -274,11 +320,12 @@
                     </Image.Resources>
                 </Image>
             </StackPanel>
+            <!--#ENDREGION VISTA PREVIA-->
             <!--#REGION ERROR-->
             <TextBlock Text="{Binding Error}"
                        Style="{StaticResource textoerror}"></TextBlock>
             <!--#ENDREGION ERROR-->
         </Grid>
-        <!--#REGION GRID PADRE-->
+        <!--#ENDREGION GRID PADRE-->
     </Border>
 </UserControl>
