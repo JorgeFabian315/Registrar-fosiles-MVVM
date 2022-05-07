@@ -22,7 +22,9 @@
     <None Remove="Assets\limpiar.png" />
     <None Remove="Assets\minimizar.png" />
     <None Remove="Assets\nombre.png" />
+    <None Remove="Assets\roca.png" />
     <None Remove="Assets\selva.jpg" />
+    <None Remove="Assets\textura2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +50,9 @@
     <Resource Include="Assets\limpiar.png" />
     <Resource Include="Assets\minimizar.png" />
     <Resource Include="Assets\nombre.png" />
+    <Resource Include="Assets\roca.png" />
     <Resource Include="Assets\selva.jpg" />
+    <Resource Include="Assets\textura2.jpg" />
   </ItemGroup>
 
 </Project>

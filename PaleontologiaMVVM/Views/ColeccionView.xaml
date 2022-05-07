@@ -61,7 +61,7 @@
                         BorderThickness="0"
                         BorderBrush="Transparent">
                     <TextBlock FontSize="30"
-                               TextAlignment="Center">Fosiles registrados</TextBlock>
+                               TextAlignment="Center">Fósiles registrados</TextBlock>
                 </Border>
                 <!--#ENDREGION TEXTO FOSIL REGISTRADOS-->
                 <!--#REGION LISTBOX-->
@@ -122,7 +122,7 @@
                           
                                 </Style>
                                 <Style TargetType="ToolTip">
-                                <Setter Property="Background" Value="#8a491f" />
+                                <Setter Property="Background" Value="White" />
                                     <Setter Property="BorderThickness" Value="0" />
                                     <Setter Property="Width" Value="80" />
                                     <Setter Property="Height" Value="30" />
@@ -136,7 +136,7 @@
                             <Button.ToolTip>
                                 <DockPanel Background="Transparent"
                                                HorizontalAlignment="Center">
-                                    <TextBlock Foreground="White" 
+                                    <TextBlock Foreground="#373737" 
                                                FontSize="20"
                                                Text="Agregar"
                                                TextAlignment="Center"
@@ -153,7 +153,7 @@
                                 <Button.ToolTip>
                                     <DockPanel Background="Transparent"
                                                HorizontalAlignment="Center">
-                                    <TextBlock Foreground="White" 
+                                    <TextBlock Foreground="#373737" 
                                                FontSize="20"
                                                Text="Editar"
                                                TextAlignment="Center"
@@ -169,7 +169,7 @@
                                 <Button.ToolTip>
                                     <DockPanel Background="Transparent"
                                                HorizontalAlignment="Center">
-                                        <TextBlock Foreground="White" 
+                                    <TextBlock Foreground="#373737" 
                                                    FontSize="20"
                                                    TextAlignment="Center"
                                                    VerticalAlignment="Center">

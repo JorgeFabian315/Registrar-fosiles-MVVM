@@ -92,7 +92,7 @@ namespace PaleontologiaMVVM.Views
             txtimagen.Text = "";
             txtNombre.Text = "";
             txtdescripcion.Text = "";
-
+            txtNombre.Focus();
         }
     }
 }

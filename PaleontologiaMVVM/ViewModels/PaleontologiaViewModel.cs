@@ -173,14 +173,16 @@ namespace PaleontologiaMVVM.ViewModels
             Evento();
             if (Vista == "AgregarVista")
             {
+                Error = "";
                 DesbloquearBotones = false;
-                Evento("DesbloquearBotones");
+                Evento();
                 Fosil = new Fosil();
             }
             if (Vista == "EditarVista")
             {
+                Error = "";
                 DesbloquearBotones = false;
-                Evento("DesbloquearBotones");
+                Evento();
                 if (Fosil != null)
                 {
                     var clon = new Fosil()

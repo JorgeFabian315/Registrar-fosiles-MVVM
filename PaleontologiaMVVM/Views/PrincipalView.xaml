@@ -110,22 +110,7 @@
                 <!--#ENDREGION GRID MENU-->
              <!--#REGION MENU-->
                 <StackPanel Grid.RowSpan="2">
-                    <!--#REGION IMAGEN USUARIO--><!--
-                 <WrapPanel Width="200" Margin="0,10,0,0">
-                        <Image Source="../Assets/user.png"
-                               VerticalAlignment="Center"
-                               Width="40"
-                               Height="40"
-                               Margin="20,0,0,0"></Image>
-                        <TextBlock Text="Jorge"
-                               Foreground="White"
-                               FontSize="20"
-                               FontFamily="../Assets/#Champagne &amp; Limousines"
-                               VerticalAlignment="Center"
-                               Margin="20,0,0,0"></TextBlock>
-                    </WrapPanel>
-                    --><!--#ENDREGION IMAGEN USUARIO-->
-                 
+                    <!--#REGION TOGGLE BUTTON-->
                     <Grid Width="200"
                           Margin="0,50,0,0">
                         <ToggleButton Width="40"
@@ -200,9 +185,9 @@
                             </ToggleButton.Style>
                         </ToggleButton>
                     </Grid>
+                    <!--#ENDREGION TOGGLE BUTTON-->
                     
                     <!--#REGION BOTONES MENU-->
-
                     <StackPanel Margin="0,25,0,0">
                         <!--#REGION ESTILOS-->
                         <StackPanel.Resources>

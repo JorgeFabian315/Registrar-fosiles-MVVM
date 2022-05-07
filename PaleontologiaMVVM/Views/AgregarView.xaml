@@ -134,6 +134,7 @@
                                    Margin="10">Descripción</TextBlock>
                         <TextBox Style="{StaticResource estilotextbox}"
                                  Width="410"
+                                 TextAlignment="Justify"
                                  Name="txtdescripcion"
                                  Foreground="Black"
                                  Text="{Binding Fosil.Descripcion}"
